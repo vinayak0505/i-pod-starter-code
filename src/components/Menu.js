@@ -83,9 +83,9 @@ const Menu = (props) => {
 	let RenderMenu = "Will be rendered in the future";
 	// Main Menu
 	if (show === "menu") {
-		RenderMenu = menuArray.map((item) => {
+		RenderMenu = menuArray.map((item,val) => {
 			return (
-				<div className={item} style={divStyling(item)} id="options">
+				<div className={item} key={val} style={divStyling(item)} id="options">
 					<p style={getTextStyle()}>{item}</p>
 					<img
 						src={theme.themeIndex == 0 ? "https://cdn-icons-png.flaticon.com/512/81/81068.png" : right}
