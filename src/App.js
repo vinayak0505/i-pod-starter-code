@@ -2,7 +2,7 @@ import React from "react";
 import Ipod from "./components/Ipod";
 import ZingTouch from "zingtouch";
 // importing images from assets
-import images from "./assets/images/images";
+import {images} from "./assets/images/images";
 // importing songs and thumbnails
 import songs from "./assets/songs/songs";
 import "./styles.css";

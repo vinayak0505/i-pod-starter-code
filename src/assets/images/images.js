@@ -11,6 +11,11 @@ import albums from "./albums.png";
 import song1Img from "./stay.png";
 import song2Img from "./deserve-you.jpeg";
 import song3Img from "./yummy.png";
+import darkmode1 from "./darkmode1.jpeg";
+import darkmode2 from "./darkmode2.jpeg";
+import darkmode3 from "./darkmode3.jpeg";
+import darkmode4 from "./darkmode4.jpeg";
+import darkmode5 from "./darkmode5.jpeg";
 
 const images = {
 	wallpaper1,
@@ -28,4 +33,11 @@ const images = {
 	song3Img,
 };
 
-export default images;
+const WallpaperDark = [
+	darkmode1,
+	darkmode2,
+	darkmode3,
+	darkmode4,
+	darkmode5
+];
+export { images, WallpaperDark };

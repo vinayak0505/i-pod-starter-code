@@ -1,6 +1,7 @@
 import React from "react";
 import Menu from "./Menu";
 import Allsongs from "./Allsongs";
+import { WallpaperDark } from "../assets/images/images";
 
 // Functional Display Component to Render the Display in Ipod
 const Display = (props) => {
@@ -28,15 +29,25 @@ const Display = (props) => {
 					progressRef={progressRef}
 				/>
 			)}
-			{screenIndex !== 7 && (
+			{
+				screenIndex < 5 && theme.themeIndex === 1 &&
+				<img
+					src={WallpaperDark[screenIndex]}
+					alt="DISPLAY SCREEN"
+					style={{
+						height: "100%",
+						width: "100%",
+						zIndex: 2,
+					}}
+				/>
+			}
+			{(screenIndex >= 5 || theme.themeIndex !== 1) && screenIndex !== 7 && (
 				<img
 					src={wallpaper[screenIndex]}
 					alt="DISPLAY SCREEN"
 					style={{
 						height: "100%",
 						width: "100%",
-						borderTopLeftRadius: "10%",
-						borderTopRightRadius: "10%",
 						zIndex: 2,
 					}}
 				/>

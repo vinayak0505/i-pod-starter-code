@@ -38,8 +38,6 @@ const styles = {
 		height: "100%",
 		width: "100%",
 		textTransform: "capitalize",
-		borderTopLeftRadius: "10%",
-		borderTopRightRadius: "10%",
 		zIndex: 5,
 		display: "flex",
 		flexDirection: "column",
