@@ -2,7 +2,7 @@ import React from "react";
 import Ipod from "./components/Ipod";
 import ZingTouch from "zingtouch";
 // importing images from assets
-import {images} from "./assets/images/images";
+import { images } from "./assets/images/images";
 // importing songs and thumbnails
 import songs from "./assets/songs/songs";
 import "./styles.css";
@@ -100,7 +100,7 @@ class App extends React.Component {
 	}
 	//-------------------------------------------------------------------------------------------
 	// Functionality to choose the menu to display and handle the Menu Clicks
-	isMenuVisible = (menu, screen) => {
+	onMenuPress = (menu, screen) => {
 		const { songsList } = this.state;
 		// To go back to the previous Menu from the current Display
 		if (menu.pageRender === "yes") {
@@ -162,8 +162,15 @@ class App extends React.Component {
 	};
 	//-------------------------------------------------------------------------------------------
 	// Functionality to handle the Click Operations in the App for the Displays
-	tap = (menu, screen) => {
+	onNextPress = (menu, screen) => {
 		const { songsList, theme } = this.state;
+		if (
+			this.state.menu.pageRender === "yes" &&
+			this.state.screen.screenIndex === 7
+		) {
+			play(songsList);
+			return;
+		}
 		// To go to the Sub Menu of the Main Menu
 		if (
 			menu.menuVisible === "yes" &&
@@ -241,36 +248,22 @@ class App extends React.Component {
 	// Functionality to handle the Rotation Operations in the App for the Options
 	rotate = (menu) => {
 		// Binds the rotate event to the active region
+		const prevMenu = Object.assign({}, menu);
 		this.activeRegionOuter.bind(
 			this.containerElementOuter,
 			"rotate",
 			(event) => {
 				event.stopPropagation();
+				const angle = event.detail.distanceFromOrigin;
+				var moves = angle / 45;
+				if (moves < 0) moves = -moves;
 				// Rotation in Main Menu
 				if (
 					menu.menuVisible === "yes" &&
 					menu.musicVisible === "no" &&
 					menu.settingsVisible === "no"
 				) {
-					const angle = event.detail.angle;
-					if (angle >= 0 && angle <= 90) {
-						menu.optionsIndex = 0;
-					} else if (angle > 90 && angle <= 180) {
-						menu.optionsIndex = 1;
-					} else if (angle > 180 && angle <= 270) {
-						menu.optionsIndex = 2;
-					} else if (angle > 270 && angle <= 360) {
-						menu.optionsIndex = 3;
-					} else if (angle >= -90 && angle < 0) {
-						menu.optionsIndex = 3;
-					} else if (angle >= -180 && angle < -90) {
-						menu.optionsIndex = 2;
-					} else if (angle >= -270 && angle < -180) {
-						menu.optionsIndex = 1;
-					} else if (angle >= -360 && angle < -270) {
-						menu.optionsIndex = 0;
-					} else {
-					}
+					menu.optionsIndex = parseInt((prevMenu.optionsIndex + moves) % 4);
 				}
 				// Rotation in Music Menu
 				else if (
@@ -278,21 +271,7 @@ class App extends React.Component {
 					menu.musicVisible === "yes" &&
 					menu.settingsVisible === "no"
 				) {
-					const angle = event.detail.angle;
-					if (angle >= 0 && angle <= 120) {
-						menu.musicIndex = 0;
-					} else if (angle > 120 && angle <= 240) {
-						menu.musicIndex = 1;
-					} else if (angle > 240 && angle <= 360) {
-						menu.musicIndex = 2;
-					} else if (angle >= -120 && angle < 0) {
-						menu.musicIndex = 2;
-					} else if (angle >= -240 && angle < -120) {
-						menu.musicIndex = 1;
-					} else if (angle >= -360 && angle < -240) {
-						menu.musicIndex = 0;
-					} else {
-					}
+					menu.musicIndex = parseInt((prevMenu.musicIndex + moves) % 3);
 				}
 				// Rotation in Settings Menu
 				else if (
@@ -300,21 +279,7 @@ class App extends React.Component {
 					menu.musicVisible === "no" &&
 					menu.settingsVisible === "yes"
 				) {
-					const angle = event.detail.angle;
-					if (angle >= 0 && angle <= 120) {
-						menu.settingsIndex = 0;
-					} else if (angle > 120 && angle <= 240) {
-						menu.settingsIndex = 1;
-					} else if (angle > 240 && angle <= 360) {
-						menu.settingsIndex = 2;
-					} else if (angle >= -120 && angle < 0) {
-						menu.settingsIndex = 2;
-					} else if (angle >= -240 && angle < -120) {
-						menu.settingsIndex = 1;
-					} else if (angle >= -360 && angle < -240) {
-						menu.settingsIndex = 0;
-					} else {
-					}
+					menu.settingsIndex = parseInt((prevMenu.settingsIndex + moves) % 3);
 				} else {
 				}
 				this.setState({ menu });
@@ -420,12 +385,11 @@ class App extends React.Component {
 					mouse={mouse}
 					songsList={songsList}
 					theme={theme}
-					isMenuVisible={this.isMenuVisible}
+					onMenuPress={this.onMenuPress}
 					addClass={this.addClass}
 					removeClass={this.removeClass}
-					tap={this.tap}
+					onNextPress={this.onNextPress}
 					rotate={this.rotate}
-					play={this.play}
 					nextSong={this.nextSong}
 					prevSong={this.prevSong}
 					updateProgress={this.updateProgress}

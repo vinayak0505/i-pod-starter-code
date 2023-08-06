@@ -7,47 +7,23 @@ const Controller = (props) => {
 	const {
 		menu,
 		rotate,
-		tap,
-		isMenuVisible,
+		onNextPress,
+		onMenuPress,
 		addClass,
 		removeClass,
 		mouse,
 		screen,
 		controllerRef,
-		play,
 		songsList,
 		nextSong,
 		prevSong,
 		theme,
 	} = props;
 	//------------------------------------------------------------------------------------------
-	// Changing the Controller Container Theme
-	const styling = () => {
-		if (theme.themeIndex === 0) {
-			return { background: "linear-gradient(90deg, #e3e4e5,#cacaca)" };
-		} else {
-			return { backgroundColor: "black" };
-		}
-	};
-	//------------------------------------------------------------------------------------------
 	return (
 		<div
 			className="controller-container"
 			id="controller-container"
-			style={styling()}
-			onClick={(e) => {
-				e.stopPropagation();
-				return;
-			}}
-			onMouseUp={(e) => {
-				e.stopPropagation();
-				removeClass("inner-circle", "down");
-				return;
-			}}
-			onMouseDown={(e) => {
-				e.stopPropagation();
-				return;
-			}}
 		>
 			<div
 				className="controller"
@@ -65,31 +41,15 @@ const Controller = (props) => {
 				}}
 				onMouseUp={(e) => {
 					e.stopPropagation();
-					removeClass("inner-circle", "down");
 					return;
 				}}
 				id="controller"
 			>
 				<div
-					className={
-						mouse.innerCircle === ""
-							? "inner-circle"
-							: "inner-circle down"
-					}
+					className={"inner-circle"}
 					style={{ height: 80, width: 80 }}
 					onClick={(e) => {
 						e.stopPropagation();
-						tap(menu, screen);
-						return;
-					}}
-					onMouseDown={(e) => {
-						e.stopPropagation();
-						addClass("inner-circle", "down");
-						return;
-					}}
-					onMouseUp={(e) => {
-						e.stopPropagation();
-						removeClass("inner-circle", "down");
 						return;
 					}}
 				></div>
@@ -98,7 +58,7 @@ const Controller = (props) => {
 					draggable="false"
 					onClick={(e) => {
 						e.stopPropagation();
-						isMenuVisible(menu, screen);
+						onMenuPress(menu, screen);
 						return;
 					}}
 				>
@@ -132,7 +92,7 @@ const Controller = (props) => {
 					className="play-pause"
 					draggable="false"
 					onClick={() => {
-						play(songsList);
+						onNextPress(menu, screen);
 					}}
 				>
 					<img

@@ -10,14 +10,13 @@ const Ipod = (props) => {
 		menu,
 		screen,
 		rotate,
-		tap,
-		isMenuVisible,
+		onNextPress,
+		onMenuPress,
 		addClass,
 		removeClass,
 		mouse,
 		controllerRef,
 		songsList,
-		play,
 		nextSong,
 		prevSong,
 		updateProgress,
@@ -63,11 +62,6 @@ const Ipod = (props) => {
 			<div
 				className="top-container"
 				style={themeTopContainer()}
-				onMouseUp={(e) => {
-					e.stopPropagation();
-					removeClass("inner-circle", "down");
-					return;
-				}}
 			>
 				<div className="display-container" style={themeDisplayContainer()}>
 					<Display
@@ -84,8 +78,8 @@ const Ipod = (props) => {
 				<Controller
 					menu={menu}
 					rotate={rotate}
-					tap={tap}
-					isMenuVisible={isMenuVisible}
+					onNextPress={onNextPress}
+					onMenuPress={onMenuPress}
 					addClass={addClass}
 					removeClass={removeClass}
 					mouse={mouse}
@@ -93,7 +87,6 @@ const Ipod = (props) => {
 					controllerRef={controllerRef}
 					songsList={songsList}
 					theme={theme}
-					play={play}
 					nextSong={nextSong}
 					prevSong={prevSong}
 				/>

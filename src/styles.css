@@ -144,6 +144,7 @@ body::-webkit-scrollbar {
 
 /* Controller Container */
 .ipod .controller-container {
+	background: linear-gradient(90deg, #e3e4e5, #cacaca);
 	filter: brightness(100%);
 	height: 100%;
 	display: flex;
