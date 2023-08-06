@@ -4,7 +4,7 @@ import React from "react";
 const Allsongs = (props) => {
 	//------------------------------------------------------------------------------------------
 	// Unpacking the Props
-	const { songsList, updateProgress, progressRef } = props;
+	const { songsList, updateProgress, progressRef,theme } = props;
 	const { songs, thumbnails, songIndex, name } = songsList;
 	const audio = songs[songIndex];
 	//------------------------------------------------------------------------------------------
@@ -12,17 +12,33 @@ const Allsongs = (props) => {
 	audio.addEventListener("timeupdate", (event) => {
 		updateProgress(event);
 	});
+
+	const playerStyle = () => {
+		var style = {
+			height: "100%",
+			width: "100%",
+			textTransform: "capitalize",
+			zIndex: 5,
+			display: "flex",
+			flexDirection: "column",
+			justifyContent: "space-evenly",
+			alignItems: "center",
+			overflow: "hidden",
+			backgroundColor: "#ADD8E6",
+		};
+		if(theme.themeIndex == 1){
+			style.backgroundColor = "#5293F7"
+		}
+		return style;
+	};
 	//------------------------------------------------------------------------------------------
 	return (
-		<div className="music-player" style={styles.player}>
+		<div className="music-player" style={playerStyle()}>
 			<div className="song-info" style={styles.songInfo}>
-				<div className="image" style={styles.img}>
-					<img
-						src={thumbnails[songIndex]}
-						alt="song-thumbnail"
-						style={{ height: "100%", width: "100%" }}
-					/>
-				</div>
+				<img
+					src={thumbnails[songIndex]}
+					alt="song-thumbnail"
+				/>
 				<p style={styles.title}>{name[songIndex]}</p>
 			</div>
 			<div className="progress-container" style={styles.progressContainer}>
@@ -34,48 +50,28 @@ const Allsongs = (props) => {
 };
 
 const styles = {
-	player: {
-		height: "100%",
-		width: "100%",
-		textTransform: "capitalize",
-		zIndex: 5,
-		display: "flex",
-		flexDirection: "column",
-		justifyContent: "space-evenly",
-		alignItems: "center",
-		overflow: "hidden",
-		backgroundColor: "black",
-	},
 	title: {
 		fontFamily: "Lobster",
 		textAlign: "center",
 		marginTop: "20px",
-		width: "90%",
 		color: "white",
 		fontWeight: "bolder",
 		fontSize: "30px",
 		letterSpacing: "0.15rem",
 	},
-	img: {
-		border: "2px solid white",
-		height: "50%",
-		width: "50%",
-	},
 	progressContainer: {
 		height: "7px",
 		backgroundColor: "#fff",
 		width: "90%",
-		borderRadius: "50px",
-		marginTop: "-50px",
 	},
+
 	songInfo: {
-		height: "100%",
-		width: "100%",
+		height: "70%",
+		width: "90%",
 		display: "flex",
-		flexDirection: "column",
 		marginTop: "-40px",
 		overflow: "hidden",
-		justifyContent: "center",
+		justifyContent: "space-evenly",
 		alignItems: "center",
 	},
 };

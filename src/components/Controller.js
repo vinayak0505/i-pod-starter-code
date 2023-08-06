@@ -33,7 +33,6 @@ const Controller = (props) => {
 				}}
 				onMouseDown={(e) => {
 					e.stopPropagation();
-					console.log("asdf");
 					rotate(menu);
 					return;
 				}}
@@ -103,7 +102,6 @@ const Controller = (props) => {
 					}}
 					onMouseDown={(e) => {
 					e.stopPropagation();
-					console.log("asdf-asdfasd");
 					return;
 				}}
 				></div>

@@ -60,7 +60,7 @@ body::-webkit-scrollbar {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background: linear-gradient(90deg, #e3e4e5,#cacaca);
+	background: linear-gradient(90deg, #e3e4e5, #cacaca);
 }
 
 /* Display Container */
@@ -72,7 +72,7 @@ body::-webkit-scrollbar {
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
-	background: linear-gradient(90deg, #e3e4e5,#cacaca);
+	background: linear-gradient(90deg, #e3e4e5, #cacaca);
 }
 
 /* Display */
@@ -87,6 +87,7 @@ body::-webkit-scrollbar {
 
 /* Menu */
 .menu {
+	padding: 10px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
@@ -204,16 +205,14 @@ body::-webkit-scrollbar {
 /* -------------------------------Music Player Styling------------------------------- */
 /* Progress Bar */
 .progress {
-	background-color: red;
+	background-color: blue;
 	height: 100%;
 	width: 0%;
 	transition: width 0.1s linear;
-	border-radius: 50px;
 }
 
 /* Music Player Cover */
 .music-player img {
-	-webkit-box-shadow: 0px 0px 12px 7px rgba(255, 255, 255, 1);
-	-moz-box-shadow: 0px 0px 12px 7px rgba(255, 255, 255, 1);
-	box-shadow: 0px 0px 12px 7px rgba(255, 255, 255, 1);
+	height: 100px;
+	width: 100px;
 }

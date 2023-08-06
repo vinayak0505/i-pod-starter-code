@@ -45,7 +45,7 @@ const Menu = (props) => {
 	const divStyling = (item) => {
 		if (value === item) {
 			if (theme.themeIndex === 0)
-				return { backgroundColor: "cyan" };
+				return { backgroundColor: "#00CCFF" };
 			else return { backgroundColor: "#008B8B" }
 		}
 		return {};

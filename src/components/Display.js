@@ -26,6 +26,8 @@ const Display = (props) => {
 				<Allsongs
 					songsList={songsList}
 					updateProgress={updateProgress}
+					progressRef={progressRef}
+					theme={theme}
 				/>
 			)}
 			{screenIndex < 5 &&
