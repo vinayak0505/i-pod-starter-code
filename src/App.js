@@ -76,7 +76,7 @@ class App extends React.Component {
 				// Wallpaper index for traversal in Wallpaper Array for every Screen
 				screenIndex: 0,
 				// Wallpaper angle for tranform in Wallpaper
-				wallpaperAngle: 90,
+				wallpaperAngle: 0,
 			},
 			// State Managing the Songs
 			songsList: {
@@ -89,7 +89,7 @@ class App extends React.Component {
 			// State Managing the Themes
 			theme: {
 				themeList: ["Classic", "Dark"],
-				themeIndex: 1,
+				themeIndex: 0,
 			},
 		};
 		// Reference to access the Component

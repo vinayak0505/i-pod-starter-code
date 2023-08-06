@@ -1,4 +1,5 @@
 import React from "react";
+import right from '../assets/images/right-arrow.png'
 
 // Functional Menu Component to Render the Various MENUs
 const Menu = (props) => {
@@ -87,7 +88,7 @@ const Menu = (props) => {
 				<div className={item} style={divStyling(item)} id="options">
 					<p style={getTextStyle()}>{item}</p>
 					<img
-						src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
+						src={theme.themeIndex == 0 ? "https://cdn-icons-png.flaticon.com/512/81/81068.png" : right}
 						alt="select"
 						style={imgStyling(item)}
 					/>
@@ -126,7 +127,7 @@ const Menu = (props) => {
 	const ipodTitleTheme = () => {
 		if (theme.themeIndex == 1) {
 			return {
-				fontSize: "1.3rem",
+				fontSize: "1.5rem",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
@@ -135,7 +136,7 @@ const Menu = (props) => {
 			};
 		} else {
 			return {
-				fontSize: "1.3rem",
+				fontSize: "1.5rem",
 				display: "flex",
 				justifyContent: "center",
 				alignItems: "center",
@@ -150,7 +151,7 @@ const Menu = (props) => {
 			style={getBackground()}
 		>
 			<div className="ipod-title" style={ipodTitleTheme()}>
-				<p>Mini Ipod App</p>
+				<p>iPod.js</p>
 			</div>
 			{RenderMenu}
 		</div>

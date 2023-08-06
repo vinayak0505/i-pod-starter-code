@@ -44,20 +44,6 @@ const Controller = (props) => {
 				id="controller"
 			>
 				<div
-					className={"inner-circle"}
-					style={{ height: 80, width: 80 }}
-					onClick={(e) => {
-						e.stopPropagation();
-						onNextPress(menu, screen);
-						return;
-					}}
-					onMouseDown={(e) => {
-					e.stopPropagation();
-					console.log("asdf-asdfasd");
-					return;
-				}}
-				></div>
-				<div
 					className="menu-btn"
 					draggable="false"
 					onClick={(e) => {
@@ -107,6 +93,20 @@ const Controller = (props) => {
 					/>
 				</div>
 			</div>
+			<div
+					className={"inner-circle"}
+					style={{ height: 80, width: 80 }}
+					onClick={(e) => {
+						e.stopPropagation();
+						onNextPress(menu, screen);
+						return;
+					}}
+					onMouseDown={(e) => {
+					e.stopPropagation();
+					console.log("asdf-asdfasd");
+					return;
+				}}
+				></div>
 		</div>
 	);
 	//------------------------------------------------------------------------------------------
