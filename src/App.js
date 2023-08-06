@@ -76,10 +76,6 @@ class App extends React.Component {
 				// Wallpaper index for traversal in Wallpaper Array for every Screen
 				screenIndex: 0,
 			},
-			// State Managing the Mouse Click CSS Effect
-			mouse: {
-				innerCircle: "",
-			},
 			// State Managing the Songs
 			songsList: {
 				songs: [song1, song2, song3],
@@ -143,34 +139,9 @@ class App extends React.Component {
 		return;
 	};
 	//-------------------------------------------------------------------------------------------
-	// Functionality to handle the Down Press CSS effect on Middle Button
-	addClass = (classname, event) => {
-		if (classname === "inner-circle" && event === "down") {
-			const { mouse } = this.state;
-			mouse.innerCircle = "down";
-			this.setState({ mouse });
-		}
-	};
-	//-------------------------------------------------------------------------------------------
-	// Functionality to handle the Up Press CSS effect on Middle Button
-	removeClass = (classname, event) => {
-		if (classname === "inner-circle" && event === "down") {
-			const { mouse } = this.state;
-			mouse.innerCircle = "";
-			this.setState({ mouse });
-		}
-	};
-	//-------------------------------------------------------------------------------------------
 	// Functionality to handle the Click Operations in the App for the Displays
 	onNextPress = (menu, screen) => {
 		const { songsList, theme } = this.state;
-		if (
-			this.state.menu.pageRender === "yes" &&
-			this.state.screen.screenIndex === 7
-		) {
-			play(songsList);
-			return;
-		}
 		// To go to the Sub Menu of the Main Menu
 		if (
 			menu.menuVisible === "yes" &&
@@ -248,6 +219,7 @@ class App extends React.Component {
 	// Functionality to handle the Rotation Operations in the App for the Options
 	rotate = (menu) => {
 		// Binds the rotate event to the active region
+		console.log("rotate");
 		const prevMenu = Object.assign({}, menu);
 		this.activeRegionOuter.bind(
 			this.containerElementOuter,
@@ -375,19 +347,16 @@ class App extends React.Component {
 	render() {
 		//------------------------------------------------------------------------------------------
 		//Unpacking the State
-		const { menu, screen, mouse, songsList, theme } = this.state;
+		const { menu, screen, songsList, theme } = this.state;
 		//------------------------------------------------------------------------------------------
 		return (
 			<div className="App">
 				<Ipod
 					screen={screen}
 					menu={menu}
-					mouse={mouse}
 					songsList={songsList}
 					theme={theme}
 					onMenuPress={this.onMenuPress}
-					addClass={this.addClass}
-					removeClass={this.removeClass}
 					onNextPress={this.onNextPress}
 					rotate={this.rotate}
 					nextSong={this.nextSong}
@@ -395,6 +364,7 @@ class App extends React.Component {
 					updateProgress={this.updateProgress}
 					controllerRef={this.controllerRef}
 					progressRef={this.progressRef}
+					play={this.play}
 				/>
 			</div>
 		);

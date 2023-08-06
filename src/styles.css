@@ -53,6 +53,8 @@ body::-webkit-scrollbar {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	box-shadow: 1px 4px 15px 10px rgba(151, 151, 151, 0.72);
+	background: linear-gradient(90deg, #e3e4e5, #cacaca);
 }
 
 /* --------------------------------Ipod Top Container Styling-------------------------------- */
@@ -68,6 +70,7 @@ body::-webkit-scrollbar {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	background: linear-gradient(90deg, #e3e4e5,#cacaca);
 }
 
 /* Display Container */
@@ -79,6 +82,7 @@ body::-webkit-scrollbar {
 	justify-content: center;
 	align-items: center;
 	z-index: 2;
+	background: linear-gradient(90deg, #e3e4e5,#cacaca);
 }
 
 /* Display */

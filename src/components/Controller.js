@@ -9,15 +9,12 @@ const Controller = (props) => {
 		rotate,
 		onNextPress,
 		onMenuPress,
-		addClass,
-		removeClass,
-		mouse,
 		screen,
 		controllerRef,
 		songsList,
 		nextSong,
 		prevSong,
-		theme,
+		play,
 	} = props;
 	//------------------------------------------------------------------------------------------
 	return (
@@ -36,6 +33,7 @@ const Controller = (props) => {
 				}}
 				onMouseDown={(e) => {
 					e.stopPropagation();
+					console.log("asdf");
 					rotate(menu);
 					return;
 				}}
@@ -50,8 +48,14 @@ const Controller = (props) => {
 					style={{ height: 80, width: 80 }}
 					onClick={(e) => {
 						e.stopPropagation();
+						onNextPress(menu, screen);
 						return;
 					}}
+					onMouseDown={(e) => {
+					e.stopPropagation();
+					console.log("asdf-asdfasd");
+					return;
+				}}
 				></div>
 				<div
 					className="menu-btn"
@@ -92,7 +96,7 @@ const Controller = (props) => {
 					className="play-pause"
 					draggable="false"
 					onClick={() => {
-						onNextPress(menu, screen);
+						play(songsList)
 					}}
 				>
 					<img
