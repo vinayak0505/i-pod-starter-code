@@ -98,8 +98,8 @@ const Menu = (props) => {
 	}
 	// Music Menu
 	else if (show === "music") {
-		RenderMenu = musicArray.map((item) => (
-			<div className={item} style={divStyling(item)} id="options">
+		RenderMenu = musicArray.map((item,val) => (
+			<div className={item} key={val} style={divStyling(item)} id="options">
 				<p style={getTextStyle()}>{item}</p>
 				<img
 					src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
@@ -111,8 +111,8 @@ const Menu = (props) => {
 	}
 	// Settings Menu
 	else if (show === "settings") {
-		RenderMenu = settingsArray.map((item) => (
-			<div className={item} style={divStyling(item)} id="options">
+		RenderMenu = settingsArray.map((item,val) => (
+			<div className={item} key={val}style={divStyling(item)} id="options">
 				<p style={getTextStyle()}>{item.replace("-", " ")}</p>
 				<img
 					src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
