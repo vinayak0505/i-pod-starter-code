@@ -55,10 +55,10 @@ class App extends React.Component {
 				// List of wallpapers, Pages in Background to Render
 				wallpaper: [
 					// wallpapers
+					images.wallpaper4,
 					images.wallpaper1,
 					images.wallpaper2,
 					images.wallpaper3,
-					images.wallpaper4,
 					images.wallpaper5,
 					// coverflow
 					images.coverflow,
