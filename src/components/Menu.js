@@ -4,7 +4,7 @@ import React from "react";
 const Menu = (props) => {
 	//------------------------------------------------------------------------------------------
 	// Unpacking the Props
-	const { menu } = props;
+	const { menu, theme } = props;
 	const {
 		optionsIndex,
 		musicIndex,
@@ -43,7 +43,9 @@ const Menu = (props) => {
 	// Used in JSX Rendering
 	const divStyling = (item) => {
 		if (value === item) {
-			return { backgroundColor: "cyan" };
+			if (theme.themeIndex === 0)
+				return { backgroundColor: "cyan" };
+			else return { backgroundColor: "#008B8B" }
 		}
 		return {};
 	};
@@ -53,6 +55,28 @@ const Menu = (props) => {
 		}
 		return {};
 	};
+	const getBackground = () => {
+		if (theme.themeIndex === 0) {
+			return { backgroundColor: "white" };
+		} else {
+			return { backgroundColor: "#323232" };
+		}
+	}
+
+	const getTextStyle = () => {
+		if (theme.themeIndex == 0) {
+			return {
+				marginLeft: "1rem",
+				textTransform: "capitalize",
+			};
+		} else {
+			return {
+				marginLeft: "1rem",
+				textTransform: "capitalize",
+				color: "white",
+			};
+		}
+	}
 	//------------------------------------------------------------------------------------------
 	// Menu to be Rendered
 	let RenderMenu = "Will be rendered in the future";
@@ -61,7 +85,7 @@ const Menu = (props) => {
 		RenderMenu = menuArray.map((item) => {
 			return (
 				<div className={item} style={divStyling(item)} id="options">
-					<p style={styles.text}>{item}</p>
+					<p style={getTextStyle()}>{item}</p>
 					<img
 						src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
 						alt="select"
@@ -75,7 +99,7 @@ const Menu = (props) => {
 	else if (show === "music") {
 		RenderMenu = musicArray.map((item) => (
 			<div className={item} style={divStyling(item)} id="options">
-				<p style={styles.text}>{item}</p>
+				<p style={getTextStyle()}>{item}</p>
 				<img
 					src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
 					alt="select"
@@ -88,7 +112,7 @@ const Menu = (props) => {
 	else if (show === "settings") {
 		RenderMenu = settingsArray.map((item) => (
 			<div className={item} style={divStyling(item)} id="options">
-				<p style={styles.text}>{item.replace("-", " ")}</p>
+				<p style={getTextStyle()}>{item.replace("-", " ")}</p>
 				<img
 					src="https://cdn-icons-png.flaticon.com/512/81/81068.png"
 					alt="select"
@@ -97,15 +121,36 @@ const Menu = (props) => {
 			</div>
 		));
 	}
+
 	//------------------------------------------------------------------------------------------
+	const ipodTitleTheme = () => {
+		if (theme.themeIndex == 1) {
+			return {
+				fontSize: "1.3rem",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				textShadow: "1px 1px 0px lightgray",
+				color: "white",
+			};
+		} else {
+			return {
+				fontSize: "1.3rem",
+				display: "flex",
+				justifyContent: "center",
+				alignItems: "center",
+				textShadow: "1px 1px 0px gray",
+			};
+		}
+	}
 	// Rendering the Menu as a whole
 	return (
 		<div
 			className={menuVisible === "no" ? "menu hide" : "menu"}
-			style={styles.menu}
+			style={getBackground()}
 		>
-			<div className="ipod-title" style={styles.title}>
-				<p style={{ borderRadiusTopLeft: "10%" }}>Mini Ipod App</p>
+			<div className="ipod-title" style={ipodTitleTheme()}>
+				<p>Mini Ipod App</p>
 			</div>
 			{RenderMenu}
 		</div>
@@ -113,23 +158,5 @@ const Menu = (props) => {
 	//------------------------------------------------------------------------------------------
 };
 
-const styles = {
-	title: {
-		fontSize: "1.3rem",
-		display: "flex",
-		justifyContent: "center",
-		alignItems: "center",
-		textShadow: "1px 2px 0px lightgray",
-		borderRadiusTopLeft: "10%",
-	},
-	text: {
-		marginLeft: "1rem",
-		textTransform: "capitalize",
-	},
-	menu: {
-		backgroundColor: "lightcyan",
-		borderRadiusTopLeft: "10%",
-	},
-};
 
 export default Menu;

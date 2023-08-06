@@ -75,6 +75,8 @@ class App extends React.Component {
 				wallpaperIndex: 0,
 				// Wallpaper index for traversal in Wallpaper Array for every Screen
 				screenIndex: 0,
+				// Wallpaper angle for tranform in Wallpaper
+				wallpaperAngle: 90,
 			},
 			// State Managing the Songs
 			songsList: {
@@ -87,7 +89,7 @@ class App extends React.Component {
 			// State Managing the Themes
 			theme: {
 				themeList: ["Classic", "Dark"],
-				themeIndex: 0,
+				themeIndex: 1,
 			},
 		};
 		// Reference to access the Component
@@ -200,7 +202,7 @@ class App extends React.Component {
 			}
 			// For changing the Orientation
 			else if (menu.settingsIndex === 1) {
-				alert("Feature Will Be Added in the Next Version Release !! :)");
+				screen.wallpaperAngle = (90 + screen.wallpaperAngle) % 360;
 			}
 			// For changing the Theme
 			else {
@@ -219,7 +221,6 @@ class App extends React.Component {
 	// Functionality to handle the Rotation Operations in the App for the Options
 	rotate = (menu) => {
 		// Binds the rotate event to the active region
-		console.log("rotate");
 		const prevMenu = Object.assign({}, menu);
 		this.activeRegionOuter.bind(
 			this.containerElementOuter,

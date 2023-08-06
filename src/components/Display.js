@@ -9,7 +9,7 @@ const Display = (props) => {
 	// Unpacking the Props
 	const { menu, screen, songsList, updateProgress, progressRef, theme } =
 		props;
-	const { wallpaper, screenIndex } = screen;
+	const { wallpaper, screenIndex, wallpaperAngle } = screen;
 	//------------------------------------------------------------------------------------------
 	// Changing the Ipod Display Theme Color
 	const themeDisplay = () => {
@@ -29,19 +29,20 @@ const Display = (props) => {
 					progressRef={progressRef}
 				/>
 			)}
-			{
-				screenIndex < 5 && theme.themeIndex === 1 &&
+			{screenIndex < 5 &&
 				<img
-					src={WallpaperDark[screenIndex]}
+					src={theme.themeIndex == 1 ? WallpaperDark[screenIndex] : wallpaper[screenIndex]}
 					alt="DISPLAY SCREEN"
 					style={{
-						height: "100%",
+						alignSelf:"center",
+						transform: `rotate(${wallpaperAngle}deg)`,
+						height: "130%",
 						width: "100%",
 						zIndex: 2,
 					}}
 				/>
 			}
-			{(screenIndex >= 5 || theme.themeIndex !== 1) && screenIndex !== 7 && (
+			{screenIndex >= 5 && screenIndex !== 7 && (
 				<img
 					src={wallpaper[screenIndex]}
 					alt="DISPLAY SCREEN"
@@ -53,7 +54,7 @@ const Display = (props) => {
 				/>
 			)}
 
-			<Menu menu={menu} />
+			<Menu menu={menu} theme={theme} />
 		</div>
 	);
 	//------------------------------------------------------------------------------------------

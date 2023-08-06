@@ -34,9 +34,9 @@ const images = {
 };
 
 const WallpaperDark = [
+	darkmode3,
 	darkmode1,
 	darkmode2,
-	darkmode3,
 	darkmode4,
 	darkmode5
 ];

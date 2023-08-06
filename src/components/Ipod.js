@@ -12,7 +12,6 @@ const Ipod = (props) => {
 		rotate,
 		onNextPress,
 		onMenuPress,
-
 		controllerRef,
 		songsList,
 		nextSong,
